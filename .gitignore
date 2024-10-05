@@ -3,7 +3,10 @@
 
 # Except the following files
 .gitignore
+!etmain
+!etmain/cmpgn_hbc.pk3
 !legacy
+!legacy/hbc-legacy.pk3
 !legacy/configs
 !legacy/configs/hbcpub.config
 !legacy/luascripts
