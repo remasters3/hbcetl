@@ -12,3 +12,9 @@
 !legacy/luascripts/wolfadmin/commands/admin
 !legacy/luascripts/wolfadmin/commands/admin/hbcsounds.lua
 !legacy/luascripts/wolfadmin/commands/admin/rema.lua
+!legacy/omni-bot
+!legacy/omni-bot/et
+!legacy/omni-bot/et/scripts
+!legacy/omni-bot/et/scripts/et_botnames_ext.gm
+!legacy/omni-bot/et/user
+!legacy/omni-bot/et/user/omni-bot.cfg
