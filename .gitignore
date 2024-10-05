@@ -3,3 +3,6 @@
 
 # Except the following files
 .gitignore
+!legacy
+!legacy/configs
+!legacy/configs/hbcpub.config
