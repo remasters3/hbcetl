@@ -841,3 +841,17 @@ function commandYess()
 end
 auth.PERM_YESS = "yess"
 commands.addadmin("yess", commandYess, auth.PERM_YESS, "-", "-")
+---- call ----
+function commandCall()
+    et.trap_SendConsoleCommand(et.EXEC_APPEND, "playsound \"sound/hbc/call.wav\";")
+    return true
+end
+auth.PERM_CALL = "call"
+commands.addadmin("call", commandCall, auth.PERM_CALL, "-", "-")
+---- quantum ----
+function commandQuantum()
+    et.trap_SendConsoleCommand(et.EXEC_APPEND, "playsound \"sound/hbc/quantum.wav\";")
+    return true
+end
+auth.PERM_QUANTUM = "quantum"
+commands.addadmin("quantum", commandCall, auth.PERM_QUANTUM, "-", "-")
