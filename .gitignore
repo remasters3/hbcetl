@@ -6,6 +6,7 @@
 !etmain
 !legacy
 !legacy/configs
+!legacy/configs/hbcgoat.config
 !legacy/configs/hbcpub.config
 !legacy/luascripts
 !legacy/luascripts/wolfadmin
