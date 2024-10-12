@@ -27,7 +27,7 @@ function commandHug(clientId, command, victim)
     local cmdClient
 
     if victim == nil then
-        et.trap_SendConsoleCommand(et.EXEC_APPEND, "csay "..clientId.." \"^dhug usage: "..commands.getadmin("hug")["syntax"].."\";")
+        et.trap_SendConsoleCommand(et.EXEC_APPEND, "csay "..clientId.." \"^dhug usage: \";")
 
         return true
     elseif tonumber(victim) == nil or tonumber(victim) < 0 or tonumber(victim) > tonumber(et.trap_Cvar_Get("sv_maxclients")) then
@@ -47,8 +47,6 @@ function commandHug(clientId, command, victim)
     end
 
     local oldName = players.getName(cmdClient)
-
-    local clientInfo = et.trap_GetUserinfo(cmdClient)
 
     et.trap_SendConsoleCommand(et.EXEC_APPEND, "cchat -1 \"."..players.getName(clientId).."^dhugs ^7"..oldName.."^9 and scores 0 XP.^9.\";")
 
