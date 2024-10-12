@@ -34,7 +34,7 @@ AxisBots["Michael"] = t;
 AxisBots["Brad"] = t;
 
 // Engineers
-t = { class=CLASS.ENGINEER, weapon=2, profile="" };
+t = { class=CLASS.ENGINEER, weapon=3, profile="" };
 AxisBots["George"] = t;
 AxisBots["Anton"] = t;
 AxisBots["Monty"] = t;
@@ -87,7 +87,7 @@ AlliedBots["Gordac"] = t;
 AlliedBots["Bortack"] = t;
 
 // Engineers
-t = { class=CLASS.ENGINEER, weapon=2, profile="" };
+t = { class=CLASS.ENGINEER, weapon=3, profile="" };
 AlliedBots["Morgriff"] = t;
 AlliedBots["Kole"] = t;
 AlliedBots["Garbok"] = t;
