@@ -854,4 +854,4 @@ function commandQuantum()
     return true
 end
 auth.PERM_QUANTUM = "quantum"
-commands.addadmin("quantum", commandCall, auth.PERM_QUANTUM, "-", "-")
+commands.addadmin("quantum", commandQuantum, auth.PERM_QUANTUM, "-", "-")
