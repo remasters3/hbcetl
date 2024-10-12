@@ -5,7 +5,7 @@
 if (this.ClassPrimaryWeaponChoice) { return; }
 
 // FieldOfView is the angle(in degrees) that the bot can 'see' in front of them.
-this.FieldOfView = 90.0;
+this.FieldOfView = 120.0;
 
 // ReactionTime is the time delay(in seconds) from when a bot first see's a target, to when
 // the bot will begin to react and target them.
