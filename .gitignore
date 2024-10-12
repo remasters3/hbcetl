@@ -18,5 +18,6 @@
 !legacy/omni-bot/et
 !legacy/omni-bot/et/scripts
 !legacy/omni-bot/et/scripts/et_botnames_ext.gm
+!legacy/omni-bot/et/scripts/def_bot.gm
 !legacy/omni-bot/et/user
 !legacy/omni-bot/et/user/omni-bot.cfg
