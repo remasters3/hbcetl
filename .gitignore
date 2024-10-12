@@ -14,6 +14,7 @@
 !legacy/luascripts/wolfadmin/commands/admin
 !legacy/luascripts/wolfadmin/commands/admin/hbcsounds.lua
 !legacy/luascripts/wolfadmin/commands/admin/rema.lua
+!legacy/luascripts/wolfadmin/commands/admin/hbchug.lua
 !legacy/omni-bot
 !legacy/omni-bot/et
 !legacy/omni-bot/et/scripts
