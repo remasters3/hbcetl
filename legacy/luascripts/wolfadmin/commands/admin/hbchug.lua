@@ -25,6 +25,7 @@ local settings = wolfa_requireModule("util.settings")
 
 function commandHug(clientId, command, victim)
     local cmdClient
+	et.trap_SendConsoleCommand(et.EXEC_APPEND, "csay "..clientId.." \"^dhug usage: \";")
 
     if victim == nil then
         et.trap_SendConsoleCommand(et.EXEC_APPEND, "csay "..clientId.." \"^dhug usage: \";")
