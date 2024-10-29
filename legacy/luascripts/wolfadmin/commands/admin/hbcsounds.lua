@@ -127,13 +127,13 @@ function commandBurgir()
 end
 auth.PERM_BURGIR = "burgir"
 commands.addadmin("burgir", commandBurgir, auth.PERM_BURGIR, "-", "-")
----- burps2 ----
-function commandBurps2()
+---- burps ----
+function commandBurps()
     et.trap_SendConsoleCommand(et.EXEC_APPEND, "playsound \"sound/hbc/burps2.wav\";")
     return true
 end
-auth.PERM_BURPS2 = "burps2"
-commands.addadmin("burps2", commandBurps2, auth.PERM_BURPS2, "-", "-")
+auth.PERM_BURPS = "burps"
+commands.addadmin("burps", commandBurps, auth.PERM_BURPS, "-", "-")
 ---- bye1 ----
 function commandBye1()
     et.trap_SendConsoleCommand(et.EXEC_APPEND, "playsound \"sound/hbc/bye1.wav\";")
@@ -694,13 +694,13 @@ function commandSlaughter()
 end
 auth.PERM_SLAUGHTER = "slaughter"
 commands.addadmin("slaughter", commandSlaughter, auth.PERM_SLAUGHTER, "-", "-")
----- snbz2 ----
-function commandSnbz2()
+---- snbz ----
+function commandSnbz()
     et.trap_SendConsoleCommand(et.EXEC_APPEND, "playsound \"sound/hbc/snbz2.wav\";")
     return true
 end
-auth.PERM_SNBZ2 = "snbz2"
-commands.addadmin("snbz2", commandSnbz2, auth.PERM_SNBZ2, "-", "-")
+auth.PERM_SNBZ = "snbz"
+commands.addadmin("snbz", commandSnbz, auth.PERM_SNBZ, "-", "-")
 ---- snjh ----
 function commandSnjh()
     et.trap_SendConsoleCommand(et.EXEC_APPEND, "playsound \"sound/hbc/snjh.wav\";")
@@ -855,3 +855,10 @@ function commandQuantum()
 end
 auth.PERM_QUANTUM = "quantum"
 commands.addadmin("quantum", commandQuantum, auth.PERM_QUANTUM, "-", "-")
+---- drum ----
+function commandDrum()
+    et.trap_SendConsoleCommand(et.EXEC_APPEND, "playsound \"sound/misc/skill_up.wav\";")
+    return true
+end
+auth.PERM_DRUM = "drum"
+commands.addadmin("drum", commandDrum, auth.PERM_DRUM, "-", "-")

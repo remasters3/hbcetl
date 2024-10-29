@@ -16,7 +16,7 @@ foreach (cls in Util.PlayerClassTable)
 
 /////////////////////////////////////////////////////////////////////
 // optionally assign a prefix for the bot name. set to "" for no prefix
-global BotPrefix = "^3(HBC)^y";
+global BotPrefix = "^3(BOT)^y";
 global AxisBotPrefix = BotPrefix;
 global AlliedBotPrefix = BotPrefix;
 

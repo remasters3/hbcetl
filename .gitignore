@@ -15,6 +15,10 @@
 !legacy/luascripts/wolfadmin/commands/admin/hbcsounds.lua
 !legacy/luascripts/wolfadmin/commands/admin/rema.lua
 !legacy/luascripts/wolfadmin/commands/admin/hbchug.lua
+!legacy/luascripts/wolfadmin/commands/admin/hbcspec.lua
+!legacy/luascripts/wolfadmin/commands/admin/hbcshufflenr.lua
+!legacy/luascripts/wolfadmin/commands/admin/hbcmcday.lua
+!legacy/luascripts/wolfadmin/commands/admin/HBCskipmap.lua
 !legacy/omni-bot
 !legacy/omni-bot/et
 !legacy/omni-bot/et/scripts
