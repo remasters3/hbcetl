@@ -18,7 +18,7 @@
 !legacy/luascripts/wolfadmin/commands/admin/hbcspec.lua
 !legacy/luascripts/wolfadmin/commands/admin/hbcshufflenr.lua
 !legacy/luascripts/wolfadmin/commands/admin/hbcmcday.lua
-!legacy/luascripts/wolfadmin/commands/admin/HBCskipmap.lua
+!legacy/luascripts/wolfadmin/commands/admin/hbcskipmap.lua
 !legacy/omni-bot
 !legacy/omni-bot/et
 !legacy/omni-bot/et/scripts
