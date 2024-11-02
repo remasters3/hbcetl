@@ -21,6 +21,66 @@
 
 game_manager
 {
+	create 
+{ 
+	    scriptname "bunkerplanks_step_2"
+            targetname "bunkerplanks_step_2"
+            origin     "381 -471 90"
+            angles "0 180 90"
+            classname "misc_gamemodel"
+            modelscale 1
+            contents 1
+            mins "-20 -20 -100"
+            maxs "20 20 52"
+            clipmask 1
+            model "models/mapobjects/blitz_sd/blitzwheelsf.md3" 
+
+}
+create 
+{ 
+	    scriptname "bunkerplanks_step_3"
+            targetname "bunkerplanks_step_3"
+            origin     "-181 -700 89"     //-181 -700 89
+            angles "0 180 90"
+            classname "misc_gamemodel"
+            modelscale 1
+            contents 1
+            mins "-20 -20 -100"
+            maxs "20 20 52"
+            clipmask 1
+            model "models/mapobjects/blitz_sd/blitzwheelsf.md3" 
+
+}
+create 
+{ 
+	    scriptname "bunkerplanks_step_4"
+            targetname "bunkerplanks_step_4"
+            origin     "1561 -1165 90"     //-181 -700 89
+            angles "0 180 90"
+            classname "misc_gamemodel"
+            modelscale 1
+            contents 1
+            mins "-20 -20 -100"
+            maxs "20 20 52"
+            clipmask 1
+            model "models/mapobjects/blitz_sd/blitzwheelsf.md3" 
+
+}
+create 
+{ 
+	    scriptname "bunkerplanks_step_5"
+            targetname "bunkerplanks_step_5"
+            origin     "-689 -1057 90"     //-181 -700 89
+            angles "0 180 90"
+            classname "misc_gamemodel"
+            modelscale 1
+            contents 1
+            mins "-20 -20 -100"
+            maxs "20 20 52"
+            clipmask 1
+            model "models/mapobjects/blitz_sd/blitzwheelsf.md3" 
+
+}
 	spawn
 	{
 		// Game rules
