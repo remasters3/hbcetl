@@ -42,6 +42,10 @@ function commandSetLevel(clientId, command, victim, level)
     elseif not et.gentity_get(cmdClient, "pers.netname") then
         return false
     end
+    
+    if not tonumber(level) then
+   	return false
+    end
 
     level = tonumber(level) or 0
 

@@ -1,6 +1,7 @@
 
 -- WolfAdmin module for Wolfenstein: Enemy Territory servers.
 -- Copyright (C) 2015-2020 Timo 'Timothy' Smit
+-- extended by EAGLE_CZ, www.teammuppet.com
 
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -28,6 +29,8 @@ function commandHelp(clientId, command, cmd)
         for command, data in pairs(cmds) do
             if data["function"] and data["flag"] and auth.isPlayerAllowed(clientId, data["flag"]) and not data["hidden"] then
                 table.insert(availableCommands, command)
+				table.sort( availableCommands)
+
             end
         end
         
@@ -35,8 +38,10 @@ function commandHelp(clientId, command, cmd)
         
         local cmdsOnLine, cmdsBuffer = 0, ""
         
+		--[[
+		-- old style table view 
         for _, command in pairs(availableCommands) do
-            cmdsBuffer = cmdsBuffer ~= "" and cmdsBuffer..string.format("%-12s", command) or string.format("%-12s", command)
+            cmdsBuffer = cmdsBuffer ~= "" and cmdsBuffer..string.format("%-15s", command) or string.format("%-15s", command)
             cmdsOnLine = cmdsOnLine + 1
                 
             if cmdsOnLine == 6 then
@@ -49,7 +54,25 @@ function commandHelp(clientId, command, cmd)
         if cmdsBuffer ~= "" then
             et.trap_SendConsoleCommand(et.EXEC_APPEND, "csay "..clientId.." \"^f"..cmdsBuffer.."\";")
         end
+        ]]--
+		
+		-- new style by Eagle
+        for _, command in pairs(availableCommands) do
+            cmdsBuffer = cmdsBuffer ~= "" and cmdsBuffer..string.format("%-20s", command) or string.format("%-20s", command)
+            cmdsOnLine = cmdsOnLine + 1
+                
+            if cmdsOnLine == 6 then
+                et.trap_SendConsoleCommand(et.EXEC_APPEND, "csay "..clientId.." \"^f"..cmdsBuffer.."\";")
+                cmdsBuffer = ""
+                cmdsOnLine = 0
+            end
+        end
         
+        if cmdsBuffer ~= "" then
+            et.trap_SendConsoleCommand(et.EXEC_APPEND, "csay "..clientId.." \"^f"..cmdsBuffer.."\";")
+        end
+		-- end of new style
+		
         et.trap_SendConsoleCommand(et.EXEC_APPEND, "csay "..clientId.." \"^9Type ^2!help ^d[command] ^9for help with a specific command.\";")
         
         return false

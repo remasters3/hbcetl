@@ -1,6 +1,7 @@
 
 -- WolfAdmin module for Wolfenstein: Enemy Territory servers.
 -- Copyright (C) 2015-2020 Timo 'Timothy' Smit
+-- extended by EAGLE_CZ, www.teammuppet.com
 
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -32,7 +33,41 @@ function admin.putPlayer(clientId, teamId)
 end
 
 function admin.kickPlayer(victimId, invokerId, reason)
-    et.trap_DropClient(victimId, "You have been kicked, Reason: "..reason, 0)
+
+	if tonumber(et.trap_Cvar_Get("g_autoTempBanTime")) then
+			TempBanTime = tonumber(et.trap_Cvar_Get("g_autoTempBanTime"))
+	else
+			-- time in seconds 
+			TempBanTime = 900
+	end
+
+    local victimPlayerId = db.getPlayer(players.getGUID(victimId))["id"]
+    local invokerPlayerId = db.getPlayer(players.getGUID(invokerId))["id"]
+
+	ban_desc = "You have been kicked, Reason: "..(reason and reason or "kicked by admin")
+    db.addBan(victimPlayerId, invokerPlayerId, os.time(), TempBanTime, ban_desc)
+
+    et.trap_DropClient(victimId, "You have been kicked, Reason: "..(reason and reason or "kicked by admin"), 0)
+	
+end
+
+function admin.kickPlayerServerFull(victimId, invokerId)
+	
+	if tonumber(et.trap_Cvar_Get("g_AllowedToComeBack")) then
+			AllowedToComeBack = tonumber(et.trap_Cvar_Get("g_AllowedToComeBack"))
+	else
+			-- time in seconds 
+			AllowedToComeBack = 5
+	end
+
+    local victimPlayerId = db.getPlayer(players.getGUID(victimId))["id"]
+    local invokerPlayerId = db.getPlayer(players.getGUID(invokerId))["id"]
+
+	ban_desc = "You have been kicked, because server was full. Please try one of our other server or come back later."
+    db.addBan(victimPlayerId, invokerPlayerId, os.time(), AllowedToComeBack, ban_desc)
+
+    et.trap_DropClient(victimId, "You have been kicked, because server was full. Please try one of our other server or come back later.", 0)
+	
 end
 
 function admin.setPlayerLevel(clientId, level)
@@ -57,6 +92,23 @@ function admin.onClientConnectAttempt(clientId, firstTime, isBot)
                 if ban then
                     return "\n\nYou have been banned for "..ban["duration"].." seconds, Reason: "..ban["reason"]
                 end
+
+			-- IP bans
+				local ip = string.gsub(et.Info_ValueForKey(et.trap_GetUserinfo(clientId), "ip"), ":%d*", "")
+				local name = et.Info_ValueForKey(et.trap_GetUserinfo(clientId), "name")
+				local IPban = db.getBanByIP(ip)
+
+				if IPban then
+					local BannedId = IPban["victim_id"]
+					local banned = db.getBanByPlayer(BannedId)
+
+					if banned then
+						db.addHistory(BannedId, 1, "LOG", os.time(), "Banned IP: "..ip.." tried to connect with a different nickname: "..name)
+						return "\n\nYou have been banned for "..banned["duration"].." seconds, Reason: "..banned["reason"]
+					end
+				end
+			-- IP bans end
+
             end
         end
     end

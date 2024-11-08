@@ -15,6 +15,8 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+-- test to see if this goes up op - stig addition
+
 local auth = wolfa_requireModule("auth.auth")
 
 local bans = wolfa_requireModule("admin.bans")
@@ -58,7 +60,7 @@ function commandBan(clientId, command, victim, ...)
         duration = util.getTimeFromString(args[1])
         reason = "banned by admin"
     elseif args[1] and not util.getTimeFromString(args[1]) then
-        duration = 31536000
+        duration = util.getTimeFromString("10y")
         reason = table.concat(args, " ")
     elseif auth.isPlayerAllowed(clientId, auth.PERM_PERMA) and auth.isPlayerAllowed(clientId, auth.PERM_NOREASON) then
         reason = "banned by admin"
@@ -86,8 +88,9 @@ function commandBan(clientId, command, victim, ...)
 
     if duration then
         durationText = "for "..duration.." seconds"
+    else
+        duration = "315360000"
     end
-
     et.trap_SendConsoleCommand(et.EXEC_APPEND, "cchat -1 \"^dban: ^7"..et.gentity_get(cmdClient, "pers.netname").." ^9has been banned "..durationText.."\";")
 
     bans.add(cmdClient, clientId, duration, reason)

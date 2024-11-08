@@ -1,6 +1,7 @@
 
 -- WolfAdmin module for Wolfenstein: Enemy Territory servers.
 -- Copyright (C) 2015-2020 Timo 'Timothy' Smit
+-- extended by EAGLE_CZ, www.teammuppet.com
 
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -86,7 +87,16 @@ function sqlite3.getPlayers(limit, offset)
 end
 
 function sqlite3.getPlayer(guid)
-    cur = assert(con:execute("SELECT * FROM `player` WHERE `guid`='"..con:escape(guid).."'"))
+    cur = assert(con:execute("SELECT * FROM `player` WHERE `guid`='"..util.escape(guid).."'"))
+    
+    local player = cur:fetch({}, "a")
+    cur:close()
+    
+    return player
+end
+
+function sqlite3.getPlayerByID(DBID)
+    cur = assert(con:execute("SELECT * FROM `player` WHERE `id`='"..util.escape(DBID).."'"))
     
     local player = cur:fetch({}, "a")
     cur:close()
@@ -272,6 +282,36 @@ function sqlite3.getAliasByName(playerid, aliasname)
     return alias
 end
 
+function sqlite3.getAliasByNickname(nickname,limit,offset)
+
+    
+    limit = limit or 30
+    offset = offset or 0
+	
+	cur = assert(con:execute("SELECT * FROM `alias` WHERE `cleanalias` like '%"..util.escape(nickname).."%' LIMIT "..tonumber(limit).." OFFSET "..tonumber(offset)))
+	
+    local aliasesByNickname = {}
+    local row = cur:fetch({}, "a")
+    
+    while row do
+        table.insert(aliasesByNickname, tables.copy(row))
+        row = cur:fetch(row, "a")
+    end
+
+    cur:close()
+    
+    return aliasesByNickname
+end
+
+function sqlite3.getAliasByNicknameCount(nickname)
+    cur = assert(con:execute("SELECT COUNT(`id`) AS `count` FROM `alias` WHERE `cleanalias` like '%"..util.escape(nickname).."%'"))
+
+    local count = tonumber(cur:fetch({}, "a")["count"])
+    cur:close()
+
+    return count
+end
+
 function sqlite3.getMostUsedAlias(playerid)
     cur = assert(con:execute("SELECT * FROM `alias` WHERE `player_id`="..tonumber(playerid).." ORDER BY `used` DESC LIMIT 1"))
 
@@ -325,6 +365,34 @@ function sqlite3.getHistory(playerId, limit, offset)
     cur:close()
     
     return warns
+end
+
+function sqlite3.listHistory(limit, offset)
+	limit = limit or 30
+    offset = offset or 0
+
+    cur = assert(con:execute("SELECT * FROM `history` LIMIT "..tonumber(limit).." OFFSET "..tonumber(offset)))
+
+    local list = {}
+    local row = cur:fetch({}, "a")
+    
+    while row do
+        table.insert(list, tables.copy(row))
+        row = cur:fetch(row, "a")
+    end
+
+    cur:close()
+    
+    return list
+end
+
+function sqlite3.getHistoryTotalCount()
+    cur = assert(con:execute("SELECT COUNT(`id`) AS `count` FROM `history`"))
+
+    local count = tonumber(cur:fetch({}, "a")["count"])
+    cur:close()
+
+    return count
 end
 
 function sqlite3.getHistoryItem(historyId)
@@ -453,6 +521,17 @@ function sqlite3.getBanByPlayer(playerId)
 
     return ban
 end
+
+function sqlite3.getBanByIP(playerIP)
+
+	cur = assert(con:execute("SELECT `victim_id` FROM `ban` WHERE `victim_id` IN (SELECT `id` FROM `player` WHERE `ip`='"..playerIP.."') AND `expires`>"..os.time().." LIMIT 1"))
+
+    local ban = cur:fetch({}, "a")
+    cur:close()
+
+    return ban
+end
+
 
 -- maps
 function sqlite3.addMap(mapname, lastplayed)
