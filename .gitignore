@@ -22,6 +22,7 @@
 !legacy/luascripts/wolfadmin/commands/admin/help.lua
 !legacy/luascripts/wolfadmin/commands/admin/setlevel.lua
 !legacy/luascripts/wolfadmin/commands/admin/ban.lua
+!legacy/luascripts/wolfadmin/commands/admin/finger.lua
 !legacy/luascripts/wolfadmin/admin
 !legacy/luascripts/wolfadmin/admin/admin.lua
 !legacy/luascripts/wolfadmin/db
