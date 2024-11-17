@@ -28,6 +28,8 @@
 !legacy/luascripts/wolfadmin/commands/admin/offlineban.lua
 !legacy/luascripts/wolfadmin/admin
 !legacy/luascripts/wolfadmin/admin/admin.lua
+!legacy/luascripts/wolfadmin/auth
+!legacy/luascripts/wolfadmin/auth/auth.lua
 !legacy/luascripts/wolfadmin/db
 !legacy/luascripts/wolfadmin/db/sqlite3.lua
 !legacy/luascripts/wolfadmin/players
