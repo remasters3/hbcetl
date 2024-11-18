@@ -37,6 +37,8 @@ auth.PERM_LISTRULES = "listrules"
 auth.PERM_LISTHISTORY = "listhistory"
 auth.PERM_LISTBANS = "listbans"
 auth.PERM_LISTALIASES = "listaliases"
+--Stig addition
+auth.PERM_LISTLEVELS = "listlevels"
 auth.PERM_LISTSTATS = "liststats"
 auth.PERM_FINGER = "finger"
 
