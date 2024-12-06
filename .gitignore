@@ -11,6 +11,8 @@
 !legacy/luascripts
 !legacy/luascripts/wolfadmin
 !legacy/luascripts/wolfadmin/commands
+!legacy/luascripts/wolfadmin/commands/client
+!legacy/luascripts/wolfadmin/commands/client/ac.lua
 !legacy/luascripts/wolfadmin/commands/admin
 !legacy/luascripts/wolfadmin/commands/admin/hbcsounds.lua
 !legacy/luascripts/wolfadmin/commands/admin/rema.lua
